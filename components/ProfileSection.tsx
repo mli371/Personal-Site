@@ -7,7 +7,7 @@ export function ProfileSection() {
     return (
         <section className="max-w-3xl space-y-12 pt-12">
             <div className="space-y-6">
-                <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 sm:text-6xl pb-2 inline-block">
+                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl pb-2">
                     Mingyang Li
                 </h1>
 
