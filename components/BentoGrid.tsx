@@ -59,8 +59,8 @@ export function BentoGrid() {
                             <p className="mt-3 text-sm text-gray-300 leading-relaxed font-sans">{item.description}</p>
                         </div>
                         {/* Interactive Glow Effect */}
-                        <div className="absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 opacity-50" />
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-gradient-to-br from-white/10 to-transparent blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 opacity-0 pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-50 pointer-events-none" />
                     </motion.div>
                 ))}
             </div>

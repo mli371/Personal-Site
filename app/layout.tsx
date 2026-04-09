@@ -26,10 +26,12 @@ export default function RootLayout({
           <div className="hidden dark:block">
              <BackgroundEffects />
           </div>
-          <Sidebar />
-          <main className="flex-1 px-6 pb-20 pt-10 md:ml-64 md:px-20 md:pt-20">
-            {children}
-          </main>
+          <div className="relative z-10 flex w-full flex-col md:flex-row">
+            <Sidebar />
+            <main className="flex-1 px-6 pb-20 pt-10 md:ml-64 md:px-20 md:pt-20">
+              {children}
+            </main>
+          </div>
         </div>
       </body>
     </html>
