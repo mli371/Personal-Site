@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 export function ExperienceSection() {
     return (
-        <section id="experience" className="max-w-3xl space-y-8 pt-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Experience</h2>
+        <section id="experience" className="max-w-3xl space-y-8 pt-16">
+            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">Experience</h2>
             <div className="space-y-12">
                 <div className="relative border-l-2 border-transparent ml-3 pl-8 pb-8 last:pb-0"
                     style={{ borderImage: "linear-gradient(to bottom, #3b82f6, #a855f7) 1" }}>
@@ -16,7 +16,7 @@ export function ExperienceSection() {
                         <div className="absolute inset-0 rounded-full bg-white opacity-50 blur-[1px]" />
                     </motion.div>
 
-                    <div className="group rounded-lg border border-gray-200 bg-white/50 p-6 transition-all hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] dark:border-gray-800 dark:bg-gray-900/50">
+                    <div className="group rounded-xl border border-gray-200 bg-white/60 p-8 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:border-gray-800/80 dark:bg-gray-900/40 backdrop-blur-md">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors">
                                 Graduate Research Assistant
@@ -30,7 +30,7 @@ export function ExperienceSection() {
                             RIPLE Research Group, UC Riverside
                         </div>
 
-                        <ul className="list-disc space-y-2 pl-4 text-gray-600 dark:text-gray-400">
+                        <ul className="list-disc space-y-3 pl-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                             <li>
                                 Spearheaded the empirical evaluation pipeline for GraphRef, a constraint-guided fuzz-testing framework for 3D mesh AI models; orchestrated deployment for 8 SOTA systems.
                             </li>

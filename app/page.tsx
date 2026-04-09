@@ -21,7 +21,7 @@ export default function Home() {
       </AnimatePresence>
 
       {!showIntro && (
-        <div className="flex flex-col gap-12 pb-20">
+        <div className="flex flex-col gap-24 pb-20">
           <ProfileSection />
           <SectionDivider />
           <ExperienceSection />

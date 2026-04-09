@@ -1,61 +1,67 @@
 
 
-MingyangLi
-+1951-966-1919|lmy1132950969@gmail.com
-PERSONALSKILLS
-TechnicalSkills:Java,C/C++,Python,Go,C#,JavaScript|SpringBoot,Django,Flask,MySQL,
-Redis,Kafka/RocketMQ|AWS,Docker,CI/CD|OpenAIAPI,LLMpipeline,Pandas,NumPy|Git,
-Linux,Agile,UnitTesting
-Languages:English(Fluent),Mandarin(Native)
-Other:English(fluent),Mandarin(native)ACADEMICEXPERIENCES
-SoftwareEngineer(Project)—NFTDigitalCollectiblesPlatform(App/H5/Admin)
-May-August2025
-Developedadminbackendforcollections,inventory,users,andanalytics;integrated
-blockchainopsviaWenchangChain.
-ImplementedSpringCloudGateway+Sa-Tokenforauthentication;usedRedisfordistributed
-sessionsandcaching;introducedRedis+snowflakeIDsforuniqueordergeneration.
-Designedpluggablemulti-chainadapterusingFactory/Strategypatterns,enablingrapid
-onboardingofnewchains.
-
-OptimizedMySQLquerieswithEXPLAINandcompositeindexes;reducedquerylatencyby
-~40%underload.
-EnsuredDB–cacheconsistencyunderhighconcurrencyviadelayeddouble-deletestrategy.
-
-IntegratedElasticSearchforcollectiblesearch,resolvingslowfuzzyqueryperformance.
-Enhancedordermodule:preventedduplicatesubmissionsandhandledorderexpirationwith
-XXL-JOB+threadpool,improvingthroughputfrom10→50orders/sec.
-
-IntegratedDubboforRPC-basedmicroservicecommunication,enablingefficient
-service-to-servicecallsandscalability.
-Tech:SpringBoot,MyBatis-Plus,Redis,MySQL,JWT,Vue,RocketMQ,XXL-JOB,Wenchang
-Chain,ElasticSearch,Canal,Dubbo,Docker
-SoftwareEngineer(ResearchProject)—LLMVerificationPipeline
-Jan-May2025
-Builtareproduciblepipelinetocollect,consolidate,andanalyzeLLMoutputsacrosstopicsand
-models.
-
-Implementedstatisticalchecks:Benford’sLaw(leading-digitchi-square)andZipf’sLaw
-(word-frequencyslope/R²).
-Automateddatamergingandtopiclabelingviaconsolidate.py;exportedper-topiccomparison
-CSVandplots.
-Producedcanonicaldataset(combined_outputs.jsonl)andreusablePythonpackage
-(llm_verification/...)withanalyzersandvisualizationutilities.
-
-Deliveredresultsasoutputs/topic_comparison.csvandsummaryplots,supporting
-reproducibilitywitharchivedscriptsanddata.
-Tech:Python,NumPy,Pandas,Matplotlib,SciPy,NLTK,tqdm,OpenAIAPI
-PROFESSIONALEXPERIENCES
-ITOperation&MaintenanceEngineer—AnhuiJiexiPharmaceuticalCo.,Ltd.
-June-November2023
-
-MaintainedERP/OAsystems,servers,andnetworkdevices;resolved50+incidents/month.
-
-Managedprovisioning,monitoring,andbackup/recoveryforenterpriseservers.
-Supporteddeploymentsandsecurityrollout;documentedSOPsforsmootherhandover.
-EDUCATION
-UniversityofCalifornia,Riverside,UnitedStates
-September2024-March2026(Expected)
-MasterofScienceinComputerScience
-ShanxiUniversity,Taiyuan,China
-September2020-June2024
-BachelorofEngineeringinSoftwareEngineering
+Mingyang Li
++1 951-966-1919| iam.alexli371@gmail.com
+| github.com/mli371| Fremont, CA
+Targeting Backend, AI Infrastructure & Autonomous Agent Engineering Roles
+Education
+University of California, Riverside (UCR)Riverside, CA
+Master of Science in Computer ScienceSeptember 2024 – March 2026
+•
+Relevant Coursework:  Database Management Systems (A+), Artificial Intelligence, Machine Learning, High
+Performance Computing, GPU Architecture & Parallel Programming, Advanced Computer Networks.
+Shanxi UniversityTaiyuan, China
+Bachelor of Engineering in Software EngineeringSeptember 2020 – June 2024
+Technical Skills
+Languages:  Java 17, C/C++, Python, Go, C#, JavaScript, SQL
+Backend Frameworks:  Spring Boot 3.x, Spring WebFlux, Project Reactor, MyBatis-Plus, Dubbo
+AI & LLM Serving:  Spring AI, Autonomous Agents (ReAct/Plan-Execute), RAG Architecture, OpenClaw, Prompting
+Databases & Middleware:  MySQL, PostgreSQL (PgVector), Redis, Kafka, RocketMQ, ElasticSearch, MinIO
+DevOps & Infrastructure:  Docker, Linux Kernel fundamentals, AWS, Git, CI/CD pipelines, JUC, JVM Optimization
+Professional & Research Experience
+Graduate Research AssistantRiverside, CA
+RIPLE Research Group (Advisor: Prof. Qian Zhang)April 2025 – December 2025
+•
+Spearheaded the empirical evaluation pipeline for GraphRef, a constraint-guided fuzz-testing framework for 3D
+mesh AI models; orchestrated deployment for 8 SOTA systems including MeshCNN and HodgeNet.
+•
+Executed large-scale structural mutation tests to benchmark Valid Input Rate (VIR) and Semantic Preservation
+Score (SPS), diagnosing model robustness against neighbor-aware geometric perturbations.
+•
+Engineered a reproducible LLM Verification Pipeline utilizing Benford’s and Zipf’s Laws; developed Python
+analyzers to process API outputs and generated a canonical benchmarking dataset (combined
+outputs.jsonl).
+Selected Projects & Engineering Lab
+NexusAgent:  Enterprise-Grade Autonomous AI PlatformJanuary 2026 – Present
+Tech Stack: Java, Spring Boot 3.2, Spring AI, PgVector, Project Reactor, Redis
+•
+Engineered a reactive multi-agent backend utilizing Project Reactor, enabling an event-driven pipeline that
+handled simulated loads of 800 QPS with sub-50ms internal processing latency.
+•
+Architected an advanced RAG Pipeline with PgVector; processed 50+ complex documents with sliding-window
+chunking, achieving sub-100ms vector retrieval via optimized HNSW indexing.
+•
+Designed a 4-stage Deep Research Engine (Plan-Execute-Critique) using ReAct patterns, orchestrating 5
+concurrent agents while reducing API token consumption by  ̃30% through dynamic context injection.
+NFT Digital Collectibles PlatformMay 2025 – August 2025
+Tech Stack: Spring Boot, MySQL, Redis, RocketMQ, Dubbo, Docker
+•
+Optimized MySQL via composite indexes (reducing latency by 40%) and implemented a delayed double-delete
+strategy to enforce strict cache-database consistency in Redis under high concurrency.
+•
+Built a scalable order module orchestrating expiration handling via XXL-JOB and custom thread pools,
+accelerating transaction throughput from 10 to 50 orders/sec and preventing duplicate submissions.
+•
+Integrated Dubbo for RPC communication and deployed the architecture utilizing Docker containers, ensuring
+environment consistency and horizontal scalability across microservices.
+AI Infrastructure & Model Serving Home LabLate 2025 – Early 2026
+Independent Engineering Projects| Docker, OpenClaw, GPU Optimization, CI/CD
+•
+Architected and containerized a local LLM serving environment utilizing Docker, successfully deploying
+open-source models (e.g., OpenClaw) for high-performance inference and prompt experimentation.
+•
+Leveraged high-performance GPU hardware (RTX 5090) to benchmark local inference latency, optimize memory
+allocation, and explore KV-cache tuning strategies for large context windows.
+•
+Maintained version control for collaborative coursework (e.g., CS201-Winter25) and personal scripts via
+GitHub, establishing foundational CI/CD pipelines for automated testing and code quality enforcement.

@@ -7,14 +7,14 @@ export function ProfileSection() {
     return (
         <section className="max-w-3xl space-y-12 pt-12">
             <div className="space-y-6">
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                <h1 className="text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-600 sm:text-6xl pb-2 inline-block">
                     Mingyang Li
                 </h1>
 
                 <div className="flex flex-wrap gap-6 text-sm text-gray-600 dark:text-gray-400">
-                    <a href="mailto:lmy1132950969@gmail.com" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    <a href="mailto:iam.alexli371@gmail.com" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         <Mail className="h-4 w-4" />
-                        lmy1132950969@gmail.com
+                        iam.alexli371@gmail.com
                     </a>
                     <a href="https://www.linkedin.com/in/mingyang-li-612081337/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                         <Linkedin className="h-4 w-4" />
@@ -26,7 +26,7 @@ export function ProfileSection() {
                     </a>
                 </div>
 
-                <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300">
+                <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 leading-relaxed max-w-none">
                     <p>
                         I am a Software Engineer targeting
                         <strong className="text-gray-900 dark:text-white"> Backend</strong>,
@@ -54,7 +54,7 @@ export function ProfileSection() {
                                     repeatType: "reverse",
                                     delay: index * 0.1
                                 }}
-                                className="relative rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-sm font-medium text-cyan-700 dark:text-cyan-300 shadow-[0_0_10px_rgba(6,182,212,0.2)] backdrop-blur-sm"
+                                className="relative rounded-full border border-cyan-500/40 bg-cyan-900/20 px-4 py-1.5 text-sm font-medium text-cyan-600 dark:text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-md"
                                 whileHover={{
                                     scale: 1.1,
                                     boxShadow: "0 0 20px rgba(6,182,212,0.5)",
@@ -68,8 +68,8 @@ export function ProfileSection() {
                 </div>
             </div>
 
-            <div id="education" className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Education</h2>
+            <div id="education" className="space-y-6 pt-4">
+                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">Education</h2>
                 <div className="space-y-8">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:gap-4">
                         <div>

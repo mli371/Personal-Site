@@ -33,8 +33,8 @@ const projects = [
 
 export function ProjectList() {
     return (
-        <section id="projects" className="max-w-4xl space-y-8 pt-12">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Selected Projects</h2>
+        <section id="projects" className="max-w-4xl space-y-8 pt-16">
+            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">Selected Projects</h2>
 
             <div className="space-y-12">
                 {projects.map((project) => (
@@ -44,7 +44,7 @@ export function ProjectList() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="group relative flex flex-col gap-6 overflow-hidden rounded-xl border border-gray-200 bg-white/50 p-6 transition-all hover:border-gray-900 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900/50 dark:hover:border-white md:flex-row"
+                        className="group relative flex flex-col gap-8 overflow-hidden rounded-2xl border border-gray-200 bg-white/60 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:border-gray-800/80 dark:bg-gray-900/40 backdrop-blur-md md:flex-row"
                     >
                         {/* Scanline Effect Overlay */}
                         <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -57,7 +57,7 @@ export function ProjectList() {
                                 src={project.image}
                                 alt={project.title}
                                 fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-110 group-hover:grayscale-0 grayscale"
+                                className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0 grayscale opacity-80 group-hover:opacity-100"
                             />
                         </div>
 
@@ -72,9 +72,11 @@ export function ProjectList() {
                                 </span>
                             </div>
 
-                            <p className="text-sm font-medium text-blue-600 dark:text-blue-400 font-mono tracking-wide uppercase">
-                                {project.category}
-                            </p>
+                            <div>
+                                <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-400 font-mono tracking-wide uppercase shadow-[0_0_10px_rgba(59,130,246,0.1)]">
+                                    {project.category}
+                                </span>
+                            </div>
 
                             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                 {project.description}
