@@ -7,18 +7,26 @@ import { Github, ExternalLink } from "lucide-react";
 const projects = [
     {
         id: "01",
+        title: "NexusAgent: Enterprise-Grade Autonomous AI Platform",
+        category: "AI / Backend",
+        description: "Engineered a reactive multi-agent backend using Project Reactor, handling 800 QPS with sub-50ms latency. Designed a 4-stage Deep Research Engine via ReAct patterns and an advanced RAG pipeline with PgVector.",
+        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?fit=crop&w=500&h=300",
+        links: { code: "#" }
+    },
+    {
+        id: "02",
         title: "NFT Digital Collectibles Platform",
         category: "Blockchain / Backend",
-        description: "Developed admin backend and blockchain integration for a digital collectibles platform. Implemented secure authentication with Spring Cloud Gateway + Sa-Token, distributed caching with Redis, and high-concurrency order processing using RocketMQ and XXL-JOB.",
+        description: "Optimized MySQL with composite indexes and implemented strict cache-database consistency via Redis. Built a scalable order module using XXL-JOB and integrated Dubbo for microservice RPC communication within Docker.",
         image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?fit=crop&w=500&h=300",
         links: { code: "#", demo: "#" }
     },
     {
-        id: "02",
-        title: "LLM Verification Pipeline",
-        category: "AI / Research",
-        description: "Built a reproducible pipeline to analyze LLM outputs across topics and models. Implemented statistical checks (Benford’s Law, Zipf’s Law) and automated data merging to create a canonical dataset for model verification.",
-        image: "https://images.unsplash.com/photo-1655720828018-edd2daec9349?fit=crop&w=500&h=300",
+        id: "03",
+        title: "AI Infrastructure & Model Serving Home Lab",
+        category: "Infrastructure / LLMs",
+        description: "Architected a local LLM serving environment using Docker and deployed OpenClaw for local inference. Benchmarked GPU inference latency and optimized memory / KV-cache on high-performance GPU hardware.",
+        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?fit=crop&w=500&h=300",
         links: { code: "#" }
     }
 ];

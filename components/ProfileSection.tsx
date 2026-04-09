@@ -28,21 +28,21 @@ export function ProfileSection() {
 
                 <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300">
                     <p>
-                        I am a Software Engineer specializing in
-                        <strong className="text-gray-900 dark:text-white"> Backend Development</strong>,
-                        <strong className="text-gray-900 dark:text-white"> Cloud Infrastructure</strong>, and
-                        <strong className="text-gray-900 dark:text-white"> AI/LLM Pipelines</strong>.
+                        I am a Software Engineer targeting
+                        <strong className="text-gray-900 dark:text-white"> Backend</strong>,
+                        <strong className="text-gray-900 dark:text-white"> AI Infrastructure</strong>, and
+                        <strong className="text-gray-900 dark:text-white"> Autonomous Agent Engineering roles</strong>.
                     </p>
                     <p>
                         Currently pursuing my M.S. in Computer Science at UC Riverside. My expertise spans
-                        building scalable microservices with Spring Boot, optimizing database performance,
-                        and developing reproducible data pipelines for Large Language Model research.
+                        building reactive microservices, optimizing database vector retrieval,
+                        and developing enterprise-grade pipelines for Large Language Models.
                     </p>
                     <div className="flex flex-wrap gap-3 pt-4">
                         {[
-                            "Java", "Python", "Spring Boot", "MySQL", "Redis", "Kafka/RocketMQ",
-                            "AWS", "Docker", "CI/CD", "Version Control", "OpenAI API",
-                            "LLM pipeline", "Pandas", "Numpy", "Git", "Linux", "Agile", "Unit Testing"
+                            "Java 17", "Python", "C/C++", "Spring Boot 3.x", "Project Reactor",
+                            "MySQL/PgVector", "Redis", "Kafka", "Spring AI", "ReAct Agents",
+                            "RAG Pipeline", "Docker", "AWS", "JUC/JVM", "Linux", "CI/CD"
                         ].map((skill, index) => (
                             <motion.span
                                 key={skill}

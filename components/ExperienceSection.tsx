@@ -19,26 +19,26 @@ export function ExperienceSection() {
                     <div className="group rounded-lg border border-gray-200 bg-white/50 p-6 transition-all hover:border-blue-500/50 hover:bg-blue-500/5 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] dark:border-gray-800 dark:bg-gray-900/50">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                             <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors">
-                                IT Operation & Maintenance Engineer
+                                Graduate Research Assistant
                             </h3>
                             <span className="text-sm font-medium text-gray-500 dark:text-gray-400 font-mono">
-                                Jun 2023 - Nov 2023
+                                Apr 2025 - Dec 2025
                             </span>
                         </div>
 
                         <div className="mb-4 text-base font-medium text-gray-700 dark:text-gray-300">
-                            Anhui Jiexi Pharmaceutical Co., Ltd.
+                            RIPLE Research Group, UC Riverside
                         </div>
 
                         <ul className="list-disc space-y-2 pl-4 text-gray-600 dark:text-gray-400">
                             <li>
-                                Maintained ERP/OA systems, servers, and network devices; resolved 50+ incidents/month.
+                                Spearheaded the empirical evaluation pipeline for GraphRef, a constraint-guided fuzz-testing framework for 3D mesh AI models; orchestrated deployment for 8 SOTA systems.
                             </li>
                             <li>
-                                Managed provisioning, monitoring, and backup/recovery for enterprise servers.
+                                Executed large-scale structural mutation tests to benchmark Valid Input Rate (VIR) and Semantic Preservation Score (SPS).
                             </li>
                             <li>
-                                Supported deployments and security rollout; documented SOPs for smoother handover.
+                                Engineered a reproducible LLM Verification Pipeline utilizing Benford's and Zipf's Laws; developed Python analyzers to process API outputs and generated a canonical benchmarking dataset.
                             </li>
                         </ul>
                     </div>
