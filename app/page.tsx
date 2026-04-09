@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ProfileSection } from "@/components/ProfileSection";
 import { ProjectList } from "@/components/ProjectList";
+import { BentoGrid } from "@/components/BentoGrid";
 import { IntroTerminal } from "@/components/IntroTerminal";
 import { SectionDivider } from "@/components/SectionDivider";
 
@@ -23,6 +24,8 @@ export default function Home() {
       {!showIntro && (
         <div className="flex flex-col gap-24 pb-20">
           <ProfileSection />
+          <SectionDivider />
+          <BentoGrid />
           <SectionDivider />
           <ExperienceSection />
           <SectionDivider />

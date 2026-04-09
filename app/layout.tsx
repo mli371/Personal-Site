@@ -3,6 +3,7 @@ import { Inter, Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { cn } from "@/lib/utils";
+import { BackgroundEffects } from "@/components/BackgroundEffects";
 
 const inter = Inter({ subsets: ["latin"] });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -20,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} ${outfit.variable} ${spaceGrotesk.variable} bg-white dark:bg-[#121212] text-black dark:text-white font-sans`} suppressHydrationWarning>
-        <div className="flex min-h-screen flex-col md:flex-row">
+      <body className={`${inter.className} ${outfit.variable} ${spaceGrotesk.variable} bg-white dark:bg-transparent text-black dark:text-white font-sans`} suppressHydrationWarning>
+        <div className="flex min-h-screen flex-col md:flex-row relative">
+          <div className="hidden dark:block">
+             <BackgroundEffects />
+          </div>
           <Sidebar />
           <main className="flex-1 px-6 pb-20 pt-10 md:ml-64 md:px-20 md:pt-20">
             {children}
