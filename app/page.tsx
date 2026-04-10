@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { ProfileSection } from "@/components/ProfileSection";
 import { ProjectList } from "@/components/ProjectList";
 import { BentoGrid } from "@/components/BentoGrid";
+import { CVViewer } from "@/components/CVViewer";
 import { IntroTerminal } from "@/components/IntroTerminal";
 import { SectionDivider } from "@/components/SectionDivider";
 
@@ -30,6 +31,8 @@ export default function Home() {
           <ExperienceSection />
           <SectionDivider />
           <ProjectList />
+          <SectionDivider />
+          <CVViewer />
         </div>
       )}
     </>

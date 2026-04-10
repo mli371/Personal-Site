@@ -5,7 +5,7 @@ import { Mail, Linkedin, Github } from "lucide-react";
 
 export function ProfileSection() {
     return (
-        <section className="max-w-3xl space-y-12 pt-12">
+        <section id="about" className="max-w-3xl space-y-12 pt-12">
             <div className="space-y-6">
                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl pb-2">
                     Mingyang Li
@@ -34,7 +34,7 @@ export function ProfileSection() {
                         <strong className="text-gray-900 dark:text-white"> Autonomous Agent Engineering roles</strong>.
                     </p>
                     <p>
-                        Currently pursuing my M.S. in Computer Science at UC Riverside. My expertise spans
+                        Recent M.S. in Computer Science graduate from UC Riverside. My expertise spans
                         building reactive microservices, optimizing database vector retrieval,
                         and developing enterprise-grade pipelines for Large Language Models.
                     </p>
@@ -77,7 +77,7 @@ export function ProfileSection() {
                             <p className="text-gray-600 dark:text-gray-400">Master of Science in Computer Science</p>
                         </div>
                         <div className="text-left sm:text-right">
-                            <span className="text-sm text-gray-500">Sep 2024 - Mar 2026 (Expected)</span>
+                            <span className="text-sm text-gray-500">Sep 2024 - Mar 2026</span>
                         </div>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:gap-4">

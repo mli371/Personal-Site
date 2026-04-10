@@ -40,4 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+#personal doc
 cv_text.txt
+portrait.jpg

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 
 export function Sidebar() {
@@ -11,15 +11,15 @@ export function Sidebar() {
                 <div className="space-y-4">
                     <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-gray-100 dark:border-gray-800">
                         <Image
-                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300"
-                            alt="Profile"
+                            src="/portrait.jpg"
+                            alt="Profile Name"
                             fill
                             className="object-cover"
                         />
                     </div>
                     <div>
                         <h1 className="text-xl font-bold text-gray-900 dark:text-white">
-                            Liming Yang
+                            Mingyang Li
                         </h1>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                             Software Engineer
@@ -29,25 +29,25 @@ export function Sidebar() {
 
                 <nav className="space-y-2">
                     <Link
-                        href="/"
+                        href="/#about"
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:text-gray-100 dark:hover:bg-white/5"
                     >
                         About
                     </Link>
                     <Link
-                        href="#projects"
+                        href="/#projects"
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5"
                     >
                         Projects
                     </Link>
                     <Link
-                        href="#news"
+                        href="/#expertise"
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5"
                     >
-                        News
+                        Expertise
                     </Link>
                     <Link
-                        href="/cv.pdf"
+                        href="/#cv"
                         className="block rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-white/5"
                     >
                         CV
@@ -56,16 +56,13 @@ export function Sidebar() {
             </div>
 
             <div className="flex gap-4">
-                <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <a href="https://github.com/mli371" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                     <Github className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <a href="https://www.linkedin.com/in/mingyang-li-612081337/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                     <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                    <Twitter className="h-5 w-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                <a href="mailto:iam.alexli371@gmail.com" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
                     <Mail className="h-5 w-5" />
                 </a>
             </div>

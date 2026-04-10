@@ -64,25 +64,26 @@ export function IntroTerminal({ onComplete }: { onComplete: () => void }) {
                 </div>
 
                 {/* Content Area */}
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                    <div className="space-y-2">
+                <div className="flex flex-col py-12 px-6 md:px-16">
+                    <div className="space-y-3">
                         {lines.map((line, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className={`text-2xl md:text-4xl font-bold tracking-wider ${line.color} flex items-center justify-center gap-4`}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className={`text-base md:text-2xl font-bold tracking-wider ${line.color} flex items-start justify-start gap-4 text-left`}
                             >
-                                <span className="text-gray-600 text-xl md:text-2xl font-normal">[{line.time}]</span>
-                                <span>{line.text}</span>
+                                <span className="text-gray-500 text-base md:text-2xl font-normal whitespace-nowrap">[{line.time}]</span>
+                                <span className="break-words">{line.text}</span>
                             </motion.div>
                         ))}
                     </div>
 
                     {/* Explicit spacer to force separation */}
-                    <div style={{ height: '40px' }} />
+                    <div style={{ height: '60px' }} />
 
                     {showButton && (
+                        <div className="flex justify-center">
                         <motion.button
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -103,6 +104,7 @@ export function IntroTerminal({ onComplete }: { onComplete: () => void }) {
                         >
                             Start System
                         </motion.button>
+                        </div>
                     )}
                 </div>
             </div>
