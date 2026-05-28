@@ -30,10 +30,29 @@ This runs ESLint, TypeScript, and a production Next.js build.
 Set this in Vercel once the production URL or custom domain is known:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://your-domain.example
+NEXT_PUBLIC_SITE_URL=https://mingyangli.dev
 ```
 
-This value is used for canonical metadata and social preview URLs. If it is not set, local builds fall back to `http://localhost:3000`.
+This value is used for canonical metadata and social preview URLs. If it is not set, builds fall back to `https://mingyangli.dev`.
+
+## Custom Domain
+
+Use Cloudflare as the registrar and DNS host. In Vercel, add both domains to the project:
+
+```text
+mingyangli.dev
+www.mingyangli.dev
+```
+
+In Cloudflare DNS, use the exact records Vercel shows in Project Settings. For the standard Vercel setup:
+
+```text
+Type   Name   Value
+A      @      76.76.21.21
+CNAME  www    cname.vercel-dns-0.com
+```
+
+Keep both records set to DNS only. This lets Cloudflare manage DNS while Vercel serves the site, handles SSL, and owns the CDN path. Choose one canonical host in Vercel, preferably `mingyangli.dev`, with `www.mingyangli.dev` redirecting to it.
 
 ## Resume Updates
 

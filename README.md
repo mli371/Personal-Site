@@ -30,7 +30,7 @@ The live resume PDF is `public/cv.pdf`. Replace that file when the resume change
 
 ## Deployment
 
-The site is intended for Vercel. Set `NEXT_PUBLIC_SITE_URL` to the production domain so canonical and social preview metadata resolve correctly.
+The site is intended for Vercel at `https://mingyangli.dev`. Set `NEXT_PUBLIC_SITE_URL=https://mingyangli.dev` in Vercel so canonical and social preview metadata resolve correctly.
 It also drives `/robots.txt` and `/sitemap.xml`.
 
 Required Node version: `>=20.9.0`.
