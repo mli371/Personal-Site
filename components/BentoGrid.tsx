@@ -1,67 +1,40 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Network, Database, Cpu, Server } from "lucide-react";
-
-const items = [
-    {
-        title: "Autonomous AI Agents",
-        description: "Orchestrating enterprise-grade Multi-Agent workflows with ReAct patterns and Project Reactor.",
-        icon: Network,
-        className: "col-span-1 md:col-span-2 bg-gradient-to-br from-blue-900/40 to-indigo-900/20 text-white border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.1)]",
-    },
-    {
-        title: "RAG Pipelines",
-        description: "Optimizing vector retrieval with PgVector and sliding-window chunking.",
-        icon: Database,
-        className: "col-span-1 bg-gradient-to-br from-cyan-900/30 to-blue-900/10 text-white border-cyan-500/30 shadow-[0_0_20px_rgba(6,182,212,0.1)]",
-    },
-    {
-        title: "GPU & Inference",
-        description: "Deploying OpenClaw and fine-tuning KV-cache memory allocation on high-performance RTX hardware.",
-        icon: Cpu,
-        className: "col-span-1 bg-gradient-to-br from-purple-900/30 to-fuchsia-900/10 text-white border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.1)]",
-    },
-    {
-        title: "High-Concurrency Backend",
-        description: "Architecting resilient order modules via RocketMQ, XXL-JOB, and Redis double-delete sync strategies.",
-        icon: Server,
-        className: "col-span-1 md:col-span-2 bg-gradient-to-br from-emerald-900/30 to-teal-900/10 text-white border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.1)]",
-    },
-];
+import { expertiseItems } from "@/data/profile";
 
 export function BentoGrid() {
     return (
-        <section id="expertise" className="max-w-4xl pt-16">
-            <h2 className="mb-12 text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">
-                Technical Expertise Grid
-            </h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-2">
-                {items.map((item, index) => (
-                    <motion.div
+        <section id="expertise" className="mx-auto w-full max-w-6xl scroll-mt-28">
+            <div className="mb-8 max-w-3xl space-y-3">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Expertise</p>
+                <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+                    Backend infrastructure for retrieval-heavy AI products.
+                </h2>
+                <p className="text-base leading-7 text-slate-400">
+                    My strongest work sits at the boundary between AI retrieval quality and classical backend reliability, including transactional order systems.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                {expertiseItems.map((item) => (
+                    <article
                         key={item.title}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        whileHover={{ scale: 1.02 }}
-                        className={cn(
-                            "group relative flex flex-col justify-between overflow-hidden rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl border backdrop-blur-md",
-                            item.className
-                        )}
+                        className="group relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.035] p-6 transition hover:border-cyan-300/25 hover:bg-white/[0.055]"
                     >
-                        <div className="z-10">
-                            <div className="mb-6 rounded-full bg-white/10 p-3 w-fit backdrop-blur-md shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/10">
-                                <item.icon className="h-6 w-6 text-white" />
+                        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent opacity-0 transition group-hover:opacity-100" />
+                        <div className="relative z-10 flex h-full flex-col gap-6">
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="rounded-md border border-white/10 bg-slate-950/60 p-3 text-cyan-200">
+                                    <item.icon className="h-5 w-5" />
+                                </div>
+                                <p className="max-w-44 text-right text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                                    {item.signal}
+                                </p>
                             </div>
-                            <h3 className="text-xl font-bold font-mono tracking-tight">{item.title}</h3>
-                            <p className="mt-3 text-sm text-gray-300 leading-relaxed font-sans">{item.description}</p>
+                            <div className="space-y-3">
+                                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                                <p className="text-sm leading-7 text-slate-400">{item.description}</p>
+                            </div>
                         </div>
-                        {/* Interactive Glow Effect */}
-                        <div className="absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-gradient-to-br from-white/10 to-transparent blur-3xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-100 opacity-0 pointer-events-none" />
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-50 pointer-events-none" />
-                    </motion.div>
+                    </article>
                 ))}
             </div>
         </section>

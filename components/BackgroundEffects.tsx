@@ -1,53 +1,11 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export function BackgroundEffects() {
     return (
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#0d0d12]">
-            {/* Sci-Fi Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]" />
-            
-            {/* Top Left Orb */}
-            <motion.div
-                animate={{
-                    x: [0, 80, -40, 0],
-                    y: [0, -80, 40, 0],
-                    scale: [1, 1.1, 0.9, 1],
-                }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-cyan-600/30 blur-[120px]"
-            />
-            
-            {/* Middle Right Orb */}
-            <motion.div
-                animate={{
-                    x: [0, -100, 80, 0],
-                    y: [0, 100, -80, 0],
-                    scale: [1, 0.9, 1.2, 1],
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute top-[30%] -right-[15%] w-[60vw] h-[60vw] max-w-[800px] max-h-[800px] rounded-full bg-blue-600/20 blur-[140px]"
-            />
-            
-            {/* Bottom Left Orb */}
-            <motion.div
-                animate={{
-                    x: [0, 60, -90, 0],
-                    y: [0, 120, -40, 0],
-                    scale: [1, 1.2, 0.9, 1],
-                }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-[20%] left-[10%] w-[45vw] h-[45vw] max-w-[500px] max-h-[500px] rounded-full bg-purple-600/30 blur-[120px]"
-            />
-            
-            {/* Shadow Mask to fade out the grid towards the edges and bottom */}
-            <div 
-                className="absolute inset-0"
-                style={{
-                    background: "radial-gradient(circle 1000px at 50% 100px, rgba(13, 13, 18, 0) 0%, #0d0d12 100%)"
-                }}
-            />
+        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#07090d]">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:44px_44px]" />
+            <div className="absolute left-[-12rem] top-[-10rem] h-[28rem] w-[28rem] rounded-full bg-cyan-500/10 blur-3xl" />
+            <div className="absolute right-[-16rem] top-[18rem] h-[34rem] w-[34rem] rounded-full bg-indigo-500/10 blur-3xl" />
+            <div className="absolute bottom-[-18rem] left-[20%] h-[36rem] w-[36rem] rounded-full bg-emerald-500/[0.08] blur-3xl" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,23,42,0)_0%,rgba(7,9,13,0.55)_45%,#07090d_100%)]" />
         </div>
     );
 }

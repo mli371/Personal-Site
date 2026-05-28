@@ -1,103 +1,171 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
+import type { ComponentType } from "react";
 import { Github, ExternalLink } from "lucide-react";
+import { projectVisualIcons, projects } from "@/data/profile";
+import { cn } from "@/lib/utils";
 
-const projects = [
-    {
-        id: "01",
-        title: "NexusAgent: Enterprise-Grade Autonomous AI Platform",
-        category: "AI / Backend",
-        description: "Engineered a reactive multi-agent backend using Project Reactor, handling 800 QPS with sub-50ms latency. Designed a 4-stage Deep Research Engine via ReAct patterns and an advanced RAG pipeline with PgVector.",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?fit=crop&w=500&h=300",
-        links: { code: "#" }
+const accentStyles = {
+    cyan: {
+        border: "border-cyan-300/20",
+        glow: "bg-cyan-300/[0.12]",
+        text: "text-cyan-100",
+        chip: "border-cyan-300/20 bg-cyan-300/[0.08] text-cyan-100",
+        line: "from-cyan-300/70",
     },
-    {
-        id: "02",
-        title: "NFT Digital Collectibles Platform",
-        category: "Blockchain / Backend",
-        description: "Optimized MySQL with composite indexes and implemented strict cache-database consistency via Redis. Built a scalable order module using XXL-JOB and integrated Dubbo for microservice RPC communication within Docker.",
-        image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?fit=crop&w=500&h=300",
-        links: { code: "#", demo: "#" }
+    emerald: {
+        border: "border-emerald-300/20",
+        glow: "bg-emerald-300/[0.12]",
+        text: "text-emerald-100",
+        chip: "border-emerald-300/20 bg-emerald-300/[0.08] text-emerald-100",
+        line: "from-emerald-300/70",
     },
-    {
-        id: "03",
-        title: "AI Infrastructure & Model Serving Home Lab",
-        category: "Infrastructure / LLMs",
-        description: "Architected a local LLM serving environment using Docker and deployed OpenClaw for local inference. Benchmarked GPU inference latency and optimized memory / KV-cache on high-performance GPU hardware.",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?fit=crop&w=500&h=300",
-        links: { code: "#" }
-    }
-];
+    violet: {
+        border: "border-violet-300/20",
+        glow: "bg-violet-300/[0.12]",
+        text: "text-violet-100",
+        chip: "border-violet-300/20 bg-violet-300/[0.08] text-violet-100",
+        line: "from-violet-300/70",
+    },
+};
 
 export function ProjectList() {
     return (
-        <section id="projects" className="max-w-4xl space-y-8 pt-16">
-            <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">Selected Projects</h2>
+        <section id="projects" className="mx-auto w-full max-w-6xl scroll-mt-28">
+            <div className="mb-8 max-w-3xl space-y-3">
+                <p className="text-sm font-semibold uppercase tracking-[0.24em] text-cyan-200">Selected Projects</p>
+                <h2 className="text-3xl font-semibold text-white sm:text-4xl">
+                    Systems projects shaped around retrieval, concurrency, and agent workflows.
+                </h2>
+            </div>
 
-            <div className="space-y-12">
-                {projects.map((project) => (
-                    <motion.div
-                        key={project.id}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
-                        className="group relative flex flex-col gap-8 overflow-hidden rounded-2xl border border-gray-200 bg-white/60 p-8 transition-all duration-500 hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] dark:border-gray-800/80 dark:bg-gray-900/40 backdrop-blur-md md:flex-row"
-                    >
-                        {/* Scanline Effect Overlay */}
-                        <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                            style={{ background: "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))", backgroundSize: "100% 2px, 3px 100%" }}
-                        />
+            <div className="space-y-5">
+                {projects.map((project, index) => {
+                    const styles = accentStyles[project.accent];
+                    const visualIcons = projectVisualIcons[project.accent];
 
-                        {/* Thumbnail */}
-                        <div className="relative h-48 w-full shrink-0 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700 md:w-72">
-                            <Image
-                                src={project.image}
-                                alt={project.title}
-                                fill
-                                className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:grayscale-0 grayscale opacity-80 group-hover:opacity-100"
-                            />
-                        </div>
+                    return (
+                        <article
+                            key={project.title}
+                            className={cn(
+                                "group relative overflow-hidden rounded-lg border bg-white/[0.035] p-5 transition hover:bg-white/[0.055] sm:p-6 lg:p-7",
+                                styles.border
+                            )}
+                        >
+                            <div className={cn("absolute right-[-7rem] top-[-7rem] h-56 w-56 rounded-full blur-3xl", styles.glow)} />
+                            <div className="relative grid gap-7 lg:grid-cols-[18rem_minmax(0,1fr)] lg:items-stretch">
+                                <ProjectVisual index={index + 1} icons={visualIcons} accent={project.accent} />
 
-                        {/* Content */}
-                        <div className="flex flex-col justify-center space-y-3 z-20">
-                            <div className="flex items-center justify-between">
-                                <h3 className="font-mono text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                                    {project.title}
-                                </h3>
-                                <span className="text-xs font-mono text-gray-400 dark:text-gray-500">
-                                    ID: {project.id}
-                                </span>
+                                <div className="flex flex-col gap-5">
+                                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                                        <div className="space-y-2">
+                                            <p className={cn("text-sm font-semibold", styles.text)}>{project.period}</p>
+                                            <h3 className="text-2xl font-semibold text-white">
+                                                {project.title}
+                                            </h3>
+                                        </div>
+                                        <div className="flex shrink-0 gap-2">
+                                            {project.links?.code && (
+                                                <ProjectLink href={project.links.code} label="Code" icon={Github} />
+                                            )}
+                                            {project.links?.demo && (
+                                                <ProjectLink href={project.links.demo} label="Demo" icon={ExternalLink} />
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <p className="max-w-3xl text-base leading-7 text-slate-300">{project.summary}</p>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.stack.map((tech) => (
+                                            <span
+                                                key={tech}
+                                                className={cn("rounded-md border px-2.5 py-1.5 text-xs font-medium", styles.chip)}
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <ul className="grid gap-3 text-sm leading-7 text-slate-400">
+                                        {project.outcomes.map((outcome) => (
+                                            <li key={outcome} className="flex gap-3">
+                                                <span className={cn("mt-3 h-px w-5 shrink-0 bg-gradient-to-r to-transparent", styles.line)} />
+                                                <span>{outcome}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-
-                            <div>
-                                <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-600 dark:text-blue-400 font-mono tracking-wide uppercase shadow-[0_0_10px_rgba(59,130,246,0.1)]">
-                                    {project.category}
-                                </span>
-                            </div>
-
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                                {project.description}
-                            </p>
-
-                            <div className="flex gap-4 pt-2">
-                                {project.links.code && (
-                                    <a href={project.links.code} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors border border-gray-200 dark:border-gray-700 px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
-                                        <Github className="h-4 w-4" /> <span className="font-mono">CODE</span>
-                                    </a>
-                                )}
-                                {project.links.demo && (
-                                    <a href={project.links.demo} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors border border-gray-200 dark:border-gray-700 px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
-                                        <ExternalLink className="h-4 w-4" /> <span className="font-mono">DEMO</span>
-                                    </a>
-                                )}
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
+                        </article>
+                    );
+                })}
             </div>
         </section>
+    );
+}
+
+function ProjectVisual({
+    index,
+    icons,
+    accent,
+}: {
+    index: number;
+    icons: Array<ComponentType<{ className?: string }>>;
+    accent: "cyan" | "emerald" | "violet";
+}) {
+    const styles = accentStyles[accent];
+
+    return (
+        <div className={cn("relative min-h-60 overflow-hidden rounded-md border bg-slate-950/50 p-5", styles.border)}>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:28px_28px]" />
+            <div className="relative z-10 flex h-full flex-col justify-between">
+                <div className="flex items-center justify-between">
+                    <span className={cn("font-mono text-sm", styles.text)}>PROJECT_{String(index).padStart(2, "0")}</span>
+                    <span className="rounded-full border border-white/10 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        Backend
+                    </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 py-8">
+                    {icons.map((Icon, iconIndex) => (
+                        <div
+                            key={iconIndex}
+                            className="flex aspect-square items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-slate-200"
+                        >
+                            <Icon className="h-6 w-6" />
+                        </div>
+                    ))}
+                </div>
+
+                <div className="space-y-2">
+                    <div className="h-2 rounded-full bg-white/10">
+                        <div className={cn("h-2 w-3/4 rounded-full bg-gradient-to-r to-transparent", styles.line)} />
+                    </div>
+                    <div className="h-2 w-2/3 rounded-full bg-white/[0.08]" />
+                    <div className="h-2 w-1/2 rounded-full bg-white/[0.08]" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function ProjectLink({
+    href,
+    label,
+    icon: Icon,
+}: {
+    href: string;
+    label: string;
+    icon: ComponentType<{ className?: string }>;
+}) {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.03] px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
+        >
+            <Icon className="h-4 w-4" />
+            {label}
+        </a>
     );
 }

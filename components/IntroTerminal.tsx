@@ -1,113 +1,145 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { profile } from "@/data/profile";
 
 const bootLines = [
-    { text: "INITIALIZING KERNEL...", color: "text-gray-400" },
-    { text: "LOADING MODULES: [AI, WEB3, REACT]", color: "text-blue-400" },
-    { text: "VERIFYING SECURITY PROTOCOLS...", color: "text-yellow-400" },
-    { text: "MOUNTING FILE SYSTEM...", color: "text-gray-400" },
-    { text: "OPTIMIZING ASSETS...", color: "text-purple-400" },
-    { text: "SYSTEM READY.", color: "text-green-500" },
+    "Loading profile data",
+    "Indexing enterprise RAG work",
+    "Checking backend systems",
+    "Ready",
 ];
 
-export function IntroTerminal({ onComplete }: { onComplete: () => void }) {
-    const [lines, setLines] = useState<{ text: string; color: string; time: string }[]>([]);
-    const [currentLineIndex, setCurrentLineIndex] = useState(0);
-    const [showButton, setShowButton] = useState(false);
+const storageKey = "mingyang-site-intro-seen-v2";
 
-    // Generate base time once
-    const [baseTime] = useState(() => new Date());
+function hasSeenIntro() {
+    try {
+        return window.localStorage.getItem(storageKey) === "true";
+    } catch {
+        return false;
+    }
+}
+
+function markIntroSeen() {
+    try {
+        window.localStorage.setItem(storageKey, "true");
+    } catch {
+        return;
+    }
+}
+
+export function IntroTerminal() {
+    const [isVisible, setIsVisible] = useState(false);
+    const [visibleLines, setVisibleLines] = useState(0);
+
+    const completeIntro = useCallback(() => {
+        markIntroSeen();
+        setIsVisible(false);
+    }, []);
 
     useEffect(() => {
-        if (currentLineIndex < bootLines.length) {
-            const timeout = setTimeout(() => {
-                // Calculate incremental time for each line (e.g., +800ms per line)
-                const lineTime = new Date(baseTime.getTime() + currentLineIndex * 850);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-                setLines((prev) => [
-                    ...prev,
-                    {
-                        ...bootLines[currentLineIndex],
-                        time: lineTime.toLocaleTimeString('en-US', { hour12: false })
-                    }
-                ]);
-                setCurrentLineIndex((prev) => prev + 1);
-            }, 400);
-            return () => clearTimeout(timeout);
-        } else {
-            const timeout = setTimeout(() => setShowButton(true), 500);
-            return () => clearTimeout(timeout);
+        if (hasSeenIntro() || prefersReducedMotion) {
+            return;
         }
-    }, [currentLineIndex, baseTime]);
+
+        const timer = window.setTimeout(() => {
+            setIsVisible(true);
+        }, 0);
+
+        return () => window.clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible || visibleLines >= bootLines.length) {
+            return;
+        }
+
+        const timer = window.setTimeout(() => {
+            setVisibleLines((value) => value + 1);
+        }, 320);
+
+        return () => window.clearTimeout(timer);
+    }, [isVisible, visibleLines]);
+
+    useEffect(() => {
+        if (!isVisible) {
+            return;
+        }
+
+        const timer = window.setTimeout(() => {
+            completeIntro();
+        }, 2600);
+
+        return () => window.clearTimeout(timer);
+    }, [completeIntro, isVisible]);
 
     return (
-        <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, y: -1000, transition: { duration: 0.8, ease: "easeInOut" } }}
-            className="fixed inset-0 z-50 grid h-screen w-screen place-items-center bg-black font-mono"
-        >
-            {/* Terminal Window Container */}
-            <div
-                className="relative w-full border-4 border-white bg-black p-2 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
-                style={{ maxWidth: '800px' }}
-            >
-                {/* Title Bar */}
-                <div className="mb-8 flex items-center justify-between border-b-4 border-white bg-white px-4 py-2 text-black">
-                    <span className="text-xl font-black tracking-widest">TERMINAL_SESSION_01</span>
-                    <div className="flex gap-3">
-                        <div className="h-4 w-4 bg-black" />
-                        <div className="h-4 w-4 bg-black" />
-                        <div className="h-4 w-4 bg-black" />
-                    </div>
-                </div>
-
-                {/* Content Area */}
-                <div className="flex flex-col py-12 px-6 md:px-16">
-                    <div className="space-y-3">
-                        {lines.map((line, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className={`text-base md:text-2xl font-bold tracking-wider ${line.color} flex items-start justify-start gap-4 text-left`}
-                            >
-                                <span className="text-gray-500 text-base md:text-2xl font-normal whitespace-nowrap">[{line.time}]</span>
-                                <span className="break-words">{line.text}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Explicit spacer to force separation */}
-                    <div style={{ height: '60px' }} />
-
-                    {showButton && (
-                        <div className="flex justify-center">
-                        <motion.button
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.1)' }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={onComplete}
-                            className="font-black uppercase tracking-widest transition-all"
-                            style={{
-                                backgroundColor: 'transparent',
-                                color: 'white',
-                                borderWidth: '4px', // Force thick border
-                                borderColor: 'white', // Force white border
-                                borderStyle: 'solid',
-                                fontSize: '1.25rem', // text-xl equivalent
-                                padding: '0.75rem 2.5rem', // px-10 py-3 equivalent
-                                marginBottom: '40px' // Add spacing below button
-                            }}
-                        >
-                            Start System
-                        </motion.button>
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    className="fixed inset-0 z-50 grid min-h-dvh place-items-center bg-[#07090d]/96 px-4 font-mono backdrop-blur-xl"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                >
+                    <div className="w-full max-w-2xl overflow-hidden rounded-lg border border-cyan-300/25 bg-slate-950 shadow-2xl shadow-cyan-950/30">
+                        <div className="flex items-center justify-between gap-4 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+                            <div className="flex items-center gap-2">
+                                <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
+                                <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
+                                <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
+                            </div>
+                            <span className="truncate text-xs uppercase tracking-[0.2em] text-slate-500">
+                                profile_boot
+                            </span>
                         </div>
-                    )}
-                </div>
-            </div>
-        </motion.div>
+
+                        <div className="space-y-7 p-5 sm:p-7">
+                            <div>
+                                <p className="text-sm text-cyan-200">{profile.name}</p>
+                                <p className="mt-2 text-xl font-semibold text-white sm:text-2xl">
+                                    {profile.shortRole}
+                                </p>
+                            </div>
+
+                            <div className="space-y-2 text-sm text-slate-300">
+                                {bootLines.slice(0, visibleLines).map((line, index) => (
+                                    <motion.div
+                                        key={line}
+                                        className="flex items-center gap-3"
+                                        initial={{ opacity: 0, x: -8 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <span className="text-slate-600">0{index + 1}</span>
+                                        <span>{line}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+
+                            <div className="flex items-center justify-between gap-4">
+                                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+                                    <div
+                                        className="h-full rounded-full bg-cyan-300 transition-all duration-300"
+                                        style={{ width: `${Math.max(20, (visibleLines / bootLines.length) * 100)}%` }}
+                                    />
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={completeIntro}
+                                    className="rounded-md border border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
+                                >
+                                    Skip
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 }

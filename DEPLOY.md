@@ -1,81 +1,58 @@
-# 🚀 Deployment Guide: Vercel
-
-This guide will help you deploy your personal website to **Vercel**, the best platform for Next.js applications.
+# Vercel Deployment Guide
 
 ## Prerequisites
 
-1.  **GitHub Account**: [Sign up here](https://github.com/join) if you don't have one.
-2.  **Vercel Account**: [Sign up here](https://vercel.com/signup) (Login with GitHub is recommended).
-3.  **Git Installed**: Ensure Git is installed on your machine.
+- Node.js `>=20.9.0`
+- npm
+- GitHub repository connected to Vercel
 
----
+## Local Verification
 
-## Step 1: Push Your Code to GitHub
+Run the full local gate before deploying:
 
-First, we need to upload your local code to a GitHub repository.
+```bash
+npm install
+npm run check
+```
 
-1.  **Initialize Git** (if not already done):
-    Open your terminal in the project folder (`/Users/limingyang/.gemini/antigravity/playground/electric-ring/personal-site`) and run:
-    ```bash
-    git init
-    ```
+This runs ESLint, TypeScript, and a production Next.js build.
 
-2.  **Create a .gitignore file**:
-    Ensure you have a `.gitignore` file to exclude unnecessary files (like `node_modules`). One should already exist, but if not, create it with:
-    ```bash
-    echo "node_modules" >> .gitignore
-    echo ".next" >> .gitignore
-    echo ".env.local" >> .gitignore
-    ```
+## Vercel Settings
 
-3.  **Commit Your Changes**:
-    ```bash
-    git add .
-    git commit -m "Initial commit: Personal Website V1"
-    ```
+- Framework Preset: Next.js
+- Install Command: `npm install`
+- Build Command: `npm run build`
+- Output Directory: keep the default
+- Node.js Version: use a current Node 20 or Node 22 LTS runtime
 
-4.  **Create a New Repository on GitHub**:
-    *   Go to [GitHub.com/new](https://github.com/new).
-    *   Name it (e.g., `my-personal-site`).
-    *   **Do not** initialize with README, .gitignore, or License (since we have them locally).
-    *   Click **Create repository**.
+## Environment Variables
 
-5.  **Push to GitHub**:
-    Copy the commands under "…or push an existing repository from the command line" and run them. They will look like this:
-    ```bash
-    git branch -M main
-    git remote add origin https://github.com/YOUR_USERNAME/my-personal-site.git
-    git push -u origin main
-    ```
+Set this in Vercel once the production URL or custom domain is known:
 
----
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
 
-## Step 2: Deploy on Vercel
+This value is used for canonical metadata and social preview URLs. If it is not set, local builds fall back to `http://localhost:3000`.
 
-Now that your code is on GitHub, Vercel can deploy it.
+## Resume Updates
 
-1.  **Go to Vercel Dashboard**: [vercel.com/dashboard](https://vercel.com/dashboard).
-2.  Click **"Add New..."** -> **"Project"**.
-3.  **Import Git Repository**:
-    *   You should see your `my-personal-site` repository in the list.
-    *   Click **Import**.
-4.  **Configure Project**:
-    *   **Framework Preset**: It should automatically detect **Next.js**.
-    *   **Root Directory**: `./` (Default is fine).
-    *   **Environment Variables**: If you used any API keys (like OpenAI), add them here. (Currently, your site is static/client-side, so you might not need any).
-5.  Click **Deploy**.
+The public resume URL is stable:
 
----
+```text
+/cv.pdf
+```
 
-## Step 3: Success! 🎉
+To update the resume, replace `public/cv.pdf` with the latest PDF and run:
 
-*   Vercel will build your project (usually takes ~1 minute).
-*   Once done, you will get a **Production URL** (e.g., `https://my-personal-site.vercel.app`).
-*   **Automatic Updates**: Every time you `git push` changes to GitHub, Vercel will automatically re-deploy your site!
+```bash
+npm run check
+```
 
----
+## Post-Deploy Checks
 
-## Troubleshooting
-
-*   **Build Failed?** Check the "Logs" tab in Vercel. Common issues are type errors or missing dependencies.
-*   **Custom Domain?** You can add your own domain (e.g., `mingyang.li`) in the Vercel Project Settings > Domains.
+- Open the production URL and verify the first screen, navigation, projects, contact links, and CV section.
+- Confirm `/cv.pdf` loads the latest resume.
+- Confirm `/opengraph-image` loads a 1200x630 preview image.
+- Confirm `/robots.txt` and `/sitemap.xml` load with the production domain.
+- Share the URL in a link preview tool or messaging app to verify title, description, and preview image.

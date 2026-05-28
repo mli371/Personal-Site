@@ -1,93 +1,115 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Mail, Linkedin, Github } from "lucide-react";
+import { ArrowUpRight, Download, MapPin } from "lucide-react";
+import { education, profile, siteHighlights, skillGroups } from "@/data/profile";
 
 export function ProfileSection() {
     return (
-        <section id="about" className="max-w-3xl space-y-12 pt-12">
-            <div className="space-y-6">
-                <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl pb-2">
-                    Mingyang Li
-                </h1>
+        <section id="about" className="mx-auto flex w-full max-w-6xl flex-col gap-12 scroll-mt-28 pt-6 lg:pt-10">
+            <div className="grid gap-10 xl:grid-cols-[minmax(0,1fr)_22rem] xl:items-end">
+                <div className="space-y-8">
+                    <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.08] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-100">
+                        <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                        {profile.role}
+                    </div>
 
-                <div className="flex flex-wrap gap-6 text-sm text-gray-600 dark:text-gray-400">
-                    <a href="mailto:iam.alexli371@gmail.com" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <Mail className="h-4 w-4" />
-                        iam.alexli371@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/mingyang-li-612081337/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <Linkedin className="h-4 w-4" />
-                        LinkedIn
-                    </a>
-                    <a href="https://github.com/mli371" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                        <Github className="h-4 w-4" />
-                        GitHub
-                    </a>
-                </div>
+                    <div className="space-y-5">
+                        <h1 className="max-w-4xl text-4xl font-semibold text-white sm:text-6xl lg:text-7xl">
+                            {profile.name}
+                        </h1>
+                        <p className="max-w-4xl text-xl leading-8 text-slate-200 sm:text-2xl sm:leading-9">
+                            {profile.headline}
+                        </p>
+                        <p className="max-w-3xl text-base leading-8 text-slate-400 sm:text-lg">
+                            {profile.summary}
+                        </p>
+                    </div>
 
-                <div className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300 leading-relaxed max-w-none">
-                    <p>
-                        I am a Software Engineer targeting
-                        <strong className="text-gray-900 dark:text-white"> Backend</strong>,
-                        <strong className="text-gray-900 dark:text-white"> AI Infrastructure</strong>, and
-                        <strong className="text-gray-900 dark:text-white"> Autonomous Agent Engineering roles</strong>.
-                    </p>
-                    <p>
-                        Recent M.S. in Computer Science graduate from UC Riverside. My expertise spans
-                        building reactive microservices, optimizing database vector retrieval,
-                        and developing enterprise-grade pipelines for Large Language Models.
-                    </p>
-                    <div className="flex flex-wrap gap-3 pt-4">
-                        {[
-                            "Java 17", "Python", "C/C++", "Spring Boot 3.x", "Project Reactor",
-                            "MySQL/PgVector", "Redis", "Kafka", "Spring AI", "ReAct Agents",
-                            "RAG Pipeline", "Docker", "AWS", "JUC/JVM", "Linux", "CI/CD"
-                        ].map((skill, index) => (
-                            <motion.span
-                                key={skill}
-                                initial={{ opacity: 0, scale: 0.8 }}
-                                animate={{ opacity: 1, scale: 1, y: [0, -3, 0] }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    repeatType: "reverse",
-                                    delay: index * 0.1
-                                }}
-                                className="relative rounded-full border border-cyan-500/40 bg-cyan-900/20 px-4 py-1.5 text-sm font-medium text-cyan-600 dark:text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-md"
-                                whileHover={{
-                                    scale: 1.1,
-                                    boxShadow: "0 0 20px rgba(6,182,212,0.5)",
-                                    borderColor: "rgba(6,182,212,0.8)"
-                                }}
+                    <div className="flex flex-wrap gap-3">
+                        <a
+                            href={profile.cvPath}
+                            download="Mingyang_Li_CV.pdf"
+                            className="inline-flex items-center justify-center gap-2 rounded-md bg-cyan-300 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200"
+                        >
+                            <Download className="h-4 w-4" />
+                            Download CV
+                        </a>
+                        {profile.contacts.map((contact) => (
+                            <a
+                                key={contact.label}
+                                href={contact.href}
+                                target={contact.href.startsWith("http") ? "_blank" : undefined}
+                                rel={contact.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                                className="inline-flex items-center justify-center gap-2 rounded-md border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:bg-white/[0.08] hover:text-white"
                             >
-                                {skill}
-                            </motion.span>
+                                <contact.icon className="h-4 w-4" />
+                                {contact.label}
+                            </a>
                         ))}
                     </div>
+
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+                        <span className="inline-flex items-center gap-2">
+                            <MapPin className="h-4 w-4 text-slate-500" />
+                            {profile.location}
+                        </span>
+                        <span>{profile.availability}</span>
+                    </div>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                    {siteHighlights.map((item) => (
+                        <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.035] p-4">
+                            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">{item.label}</p>
+                            <p className="mt-2 text-lg font-semibold text-white">{item.value}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
 
-            <div id="education" className="space-y-6 pt-4">
-                <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400">Education</h2>
-                <div className="space-y-8">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:gap-4">
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">University of California, Riverside</h3>
-                            <p className="text-gray-600 dark:text-gray-400">Master of Science in Computer Science</p>
-                        </div>
-                        <div className="text-left sm:text-right">
-                            <span className="text-sm text-gray-500">Sep 2024 - Mar 2026</span>
-                        </div>
+            <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_24rem]">
+                <div className="rounded-lg border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+                    <div className="mb-5 flex items-center justify-between gap-4">
+                        <h2 className="text-lg font-semibold text-white">Technical Skills</h2>
+                        <ArrowUpRight className="h-4 w-4 text-slate-500" />
                     </div>
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:gap-4">
-                        <div>
-                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Shanxi University</h3>
-                            <p className="text-gray-600 dark:text-gray-400">Bachelor of Engineering in Software Engineering</p>
-                        </div>
-                        <div className="text-left sm:text-right">
-                            <span className="text-sm text-gray-500">Sep 2020 - Jun 2024</span>
-                        </div>
+                    <div className="grid gap-5 md:grid-cols-2">
+                        {skillGroups.map((group) => (
+                            <div key={group.label} className="space-y-3">
+                                <h3 className="text-sm font-semibold text-cyan-100">{group.label}</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {group.items.map((skill) => (
+                                        <span
+                                            key={skill}
+                                            className="rounded-md border border-white/10 bg-slate-950/45 px-2.5 py-1.5 text-xs font-medium text-slate-300"
+                                        >
+                                            {skill}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="rounded-lg border border-white/10 bg-white/[0.035] p-5 sm:p-6">
+                    <h2 className="text-lg font-semibold text-white">Education</h2>
+                    <div className="mt-5 space-y-5">
+                        {education.map((item) => (
+                            <article key={item.school} className="space-y-2">
+                                <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
+                                    <div>
+                                        <h3 className="font-semibold text-slate-100">{item.school}</h3>
+                                        <p className="text-sm text-slate-400">{item.degree}</p>
+                                    </div>
+                                    <p className="text-sm text-slate-500">{item.dates}</p>
+                                </div>
+                                <p className="text-sm text-slate-500">{item.location}</p>
+                                {item.coursework && (
+                                    <p className="text-sm leading-6 text-slate-400">
+                                        Coursework: {item.coursework.join(", ")}
+                                    </p>
+                                )}
+                            </article>
+                        ))}
                     </div>
                 </div>
             </div>
