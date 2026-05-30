@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { BackgroundEffects } from "@/components/BackgroundEffects";
@@ -70,6 +71,7 @@ export default function RootLayout({
             </main>
           </div>
         </div>
+        <Analytics />
       </body>
     </html>
   );
